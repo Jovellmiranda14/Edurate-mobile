@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
-import placeholderImg from "../assets/images/placeholder.png";
+import placeholderImg from "../assets/placeholder.png";
 
 const user = {
   name: "John Smith",
