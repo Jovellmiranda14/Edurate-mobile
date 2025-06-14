@@ -12,18 +12,21 @@ import { useNavigation } from "@react-navigation/native";
 const LoginForm = () => {
   const [studentNumber, setStudentNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({ studentNumber: "", password: "" });
   const navigation = useNavigation();
 
-  const handlePasswordChange = (text) => {
-    if (text.length < password.length) {
-      setPassword(password.slice(0, -1));
-    } else {
-      const newChar = text.charAt(text.length - 1);
-      setPassword(password + newChar);
-    }
-  };
-
   const handleLogin = () => {
+    const newErrors = {};
+    if (!studentNumber.trim())
+      newErrors.studentNumber = "Student Number is required.";
+    if (!password.trim()) newErrors.password = "Password is required.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
     console.log("Logging in with:", studentNumber, password);
     navigation.navigate("Home");
   };
@@ -44,17 +47,24 @@ const LoginForm = () => {
             }
             keyboardType="numeric"
           />
+          {errors.studentNumber ? (
+            <Text style={styles.errorText}>{errors.studentNumber}</Text>
+          ) : null}
         </View>
 
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Password</Text>
           <TextInput
             style={styles.input}
-            value={"*".repeat(password.length)}
-            onChangeText={handlePasswordChange}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={true}
             autoCapitalize="none"
             autoCorrect={false}
           />
+          {errors.password ? (
+            <Text style={styles.errorText}>{errors.password}</Text>
+          ) : null}
         </View>
 
         <TouchableOpacity>
@@ -86,6 +96,7 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     width: 300,
+    marginBottom: 10,
   },
   label: {
     fontSize: 14,
@@ -96,7 +107,6 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "#ffffffaa",
     borderRadius: 6,
-    marginBottom: 5,
     padding: 12,
     fontSize: 16,
     color: "#000",
@@ -119,6 +129,11 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 18,
+  },
+  errorText: {
+    color: "red",
+    marginTop: 4,
+    fontSize: 13,
   },
 });
 
