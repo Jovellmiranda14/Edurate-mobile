@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
-import placeholderImg from "../assets/placeholder.png";
+import placeholderImg from "../assets/images/placeholder.png"; // Placeholder image for professors without images
 
 const user = {
   name: "John Smith",
