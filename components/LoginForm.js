@@ -5,12 +5,9 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-
-const { width } = Dimensions.get("window");
 
 const LoginForm = () => {
   const [studentNumber, setStudentNumber] = useState("");
