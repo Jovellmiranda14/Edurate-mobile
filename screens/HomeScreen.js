@@ -2,6 +2,7 @@ import React from "react";
 import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import placeholderImg from "../assets/images/placeholder.png";
+import HamburgerMenu from "../components/HamburgerMenu";
 const user = {
   name: "John Smith",
   course: "BS in Information Technology",
@@ -44,6 +45,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        <HamburgerMenu stickyHeaderIndices={[0]} />
         <View style={[styles.card, { marginTop: 20 }]}>
           <View style={styles.row}>
             <Image source={{ uri: user.image }} style={styles.avatar} />
@@ -56,7 +58,7 @@ export default function HomeScreen() {
         </View>
 
         <Text style={styles.heading}>Your Professors</Text>
-        
+
         {professors.map((prof, index) => (
           <View key={index} style={styles.card}>
             <View style={styles.row}>
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 20,
+    paddingTop: 40
   },
   card: {
     backgroundColor: "#fff",
@@ -124,11 +127,18 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "600",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: -1,
+    marginBottom: 15,
     marginLeft: 4,
+    borderColor: "#fff",
+    borderWidth: 1,
+    alignSelf: "flex-start",
+    backgroundColor: "rgba(255,255,255,0.1)",
+    paddingHorizontal: 4,
+    paddingVertical: 4,
+    borderRadius: 5,
   },
   coreLabel: {
     fontSize: 12,
