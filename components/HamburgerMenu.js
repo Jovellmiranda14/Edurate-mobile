@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     title: {
-        fontSize: 35,
+        fontSize: 30,
         color: "#fff",
         fontWeight: "bold",
     },
@@ -88,19 +88,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginBottom: 40,
     },
-    logoText: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "#d1c4e9", // light purple
-        marginTop: 10,
-    },
     menuItem: {
         flexDirection: "row",
         alignItems: "center",
         paddingVertical: 15,
     },
     menuText: {
-        fontSize: 18,
+        fontSize: 17,
         color: "#fff",
         marginLeft: 10,
     },
@@ -110,7 +104,7 @@ const styles = StyleSheet.create({
         paddingVertical: 350,
     },
     menuTextlogout: {
-        fontSize: 18,
+        fontSize: 17,
         color: "#fff",
         marginLeft: 10,
     },
