@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ScrollView, StyleSheet, Text, Image } from "react-native";
-import placeholderImg from "../assets/images/placeholder.png"; // Placeholder image for professors without images
-
+import { SafeAreaView } from "react-native-safe-area-context";
+import placeholderImg from "../assets/images/placeholder.png";
 const user = {
   name: "John Smith",
   course: "BS in Information Technology",
@@ -42,52 +42,56 @@ const professors = [
 
 export default function HomeScreen() {
   return (
-    <ScrollView style={styles.container}>
-      <View style={[styles.card, { marginTop: 50 }]}>
-        <View style={styles.row}>
-          <Image source={{ uri: user.image }} style={styles.avatar} />
-          <View style={styles.userInfo}>
-            <Text style={styles.name}>{user.name}</Text>
-            <Text style={styles.subtitle}>{user.course}</Text>
-            <Text style={styles.subtitle}>{user.yearSection}</Text>
-          </View>
-        </View>
-      </View>
-
-      <Text style={styles.heading}>Your Professors</Text>
-
-      {professors.map((prof, index) => (
-        <View key={index} style={styles.card}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={[styles.card, { marginTop: 20 }]}>
           <View style={styles.row}>
-            <Image
-              source={prof.image ? { uri: prof.image } : placeholderImg}
-              style={styles.avatar}
-            />
+            <Image source={{ uri: user.image }} style={styles.avatar} />
             <View style={styles.userInfo}>
-              <Text style={styles.name}>{prof.name}</Text>
-              <Text style={styles.subtitle}>{prof.department}</Text>
-              <Text style={styles.coreLabel}>Core subject/s:</Text>
-              <View style={styles.tagContainer}>
-                {prof.subjects.map((subj, i) => (
-                  <View key={i} style={styles.tag}>
-                    <Text style={styles.tagText}>{subj}</Text>
-                  </View>
-                ))}
-              </View>
+              <Text style={styles.name}>{user.name}</Text>
+              <Text style={styles.subtitle}>{user.course}</Text>
+              <Text style={styles.subtitle}>{user.yearSection}</Text>
             </View>
           </View>
         </View>
-      ))}
-    </ScrollView>
+
+        <Text style={styles.heading}>Your Professors</Text>
+        
+        {professors.map((prof, index) => (
+          <View key={index} style={styles.card}>
+            <View style={styles.row}>
+              <Image
+                source={prof.image ? { uri: prof.image } : placeholderImg}
+                style={styles.avatar}
+              />
+              <View style={styles.userInfo}>
+                <Text style={styles.name}>{prof.name}</Text>
+                <Text style={styles.subtitle}>{prof.department}</Text>
+                <Text style={styles.coreLabel}>Core subject/s:</Text>
+                <View style={styles.tagContainer}>
+                  {prof.subjects.map((subj, i) => (
+                    <View key={i} style={styles.tag}>
+                      <Text style={styles.tagText}>{subj}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#1E2640",
+  safeArea: {
     flex: 1,
+    backgroundColor: "#1E2640",
+  },
+  scrollContent: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: "#fff",
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "600",
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 10,
     marginLeft: 4,
   },
