@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import { useNavigation } from "@react-navigation/native";
 const { height } = Dimensions.get("window");
 
 const HamburgerMenu = ({ onLogout }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             {/* Hamburger Icon */}
@@ -20,19 +20,19 @@ const HamburgerMenu = ({ onLogout }) => {
                     {/* Logo / App name */}
                     <View style={styles.logoContainer}>
                         <Image
-                            source={require("../assets/images/edurate-logo.png")}
+                            source={require( "../assets/images/edurate-logo.png")}
                             style={styles.logo}
                         />
                         <Text style={styles.title}>EduRate</Text>
                     </View>
 
                     {/* Menu Items */}
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("Home")}>
                         <Ionicons name="home" size={25} color="#fff" />
                         <Text style={styles.menuText}>Home</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuItem}>
+                    <TouchableOpacity style={styles.menuItem} onPress={() => navigation.navigate("CommentStatus")}>
                         <Ionicons name="chatbubbles" size={25} color="#fff" />
                         <Text style={styles.menuText}>Comment status</Text>
                     </TouchableOpacity>
@@ -40,7 +40,7 @@ const HamburgerMenu = ({ onLogout }) => {
                     {/* Spacer pushes logout to bottom */}
 
                     {/* Logout */}
-                    <TouchableOpacity style={styles.menuItemlogout} onPress={onLogout}>
+                    <TouchableOpacity style={styles.menuItemlogout} onPress={() => navigation.navigate("Login")}>
                         <Ionicons name="log-out-outline" size={30} color="#fff" />
                         <Text style={styles.menuTextlogout}>Log out</Text>
                     </TouchableOpacity>
@@ -51,7 +51,6 @@ const HamburgerMenu = ({ onLogout }) => {
 };
 
 export default HamburgerMenu;
-
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
