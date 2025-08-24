@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     },
     name: {
         fontWeight: "bold",
-        fontSize: 20,
+        fontSize: 18,
     },
     subtitle: {
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: "500",
         fontStyle: "italic",
     },
