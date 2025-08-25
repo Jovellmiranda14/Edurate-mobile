@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from "rea
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 const { height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const HamburgerMenu = ({ onLogout }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ const HamburgerMenu = ({ onLogout }) => {
                     {/* Logo / App name */}
                     <View style={styles.logoContainer}>
                         <Image
-                            source={require( "../assets/images/edurate-logo.png")}
+                            source={require("../assets/images/edurate-logo.png")}
                             style={styles.logo}
                         />
                         <Text style={styles.title}>EduRate</Text>
@@ -36,9 +37,6 @@ const HamburgerMenu = ({ onLogout }) => {
                         <Ionicons name="chatbubbles" size={25} color="#fff" />
                         <Text style={styles.menuText}>Comment status</Text>
                     </TouchableOpacity>
-
-                    {/* Spacer pushes logout to bottom */}
-
                     {/* Logout */}
                     <TouchableOpacity style={styles.menuItemlogout} onPress={() => navigation.navigate("Login")}>
                         <Ionicons name="log-out-outline" size={30} color="#fff" />
@@ -78,7 +76,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         height: height,
-        width: 250,
+        width: width * 0.75,
         backgroundColor: "#1c2541",
         alignItems: "left",
         paddingTop: 80,
