@@ -5,8 +5,8 @@ import HamburgerMenu from "../components/HamburgerMenu";
 
 export default function CommentStatusScreen({ route }) {
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         <HamburgerMenu stickyHeaderIndices={[0]} />
         <View>
           <Text>Comment Status</Text>
@@ -18,4 +18,13 @@ export default function CommentStatusScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#81879aff",
+  },
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    paddingTop: 60,
+  },
 });
