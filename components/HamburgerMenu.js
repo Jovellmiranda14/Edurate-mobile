@@ -52,8 +52,6 @@ export default HamburgerMenu;
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
-        top: 10,
-        left: 20,
         zIndex: 10,
     },
     logo: {
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     icon: {
         padding: 10,
         zIndex: 20,
-        marginLeft: -5,
+        marginLeft: 10,
     },
     menu: {
         position: "absolute",
@@ -90,19 +88,22 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         paddingVertical: 15,
+        marginLeft: 10,
     },
     menuText: {
         fontSize: 17,
         color: "#fff",
-        marginLeft: 10,
+        marginLeft: 15,
     },
     menuItemlogout: {
         flexDirection: "row",
         alignItems: "center",
         paddingVertical: 350,
+        marginLeft: 10,
     },
     menuTextlogout: {
         fontSize: 17,
+        alignItems: "center",
         color: "#fff",
         marginLeft: 10,
     },
